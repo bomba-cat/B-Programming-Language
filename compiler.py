@@ -25,25 +25,38 @@ _vars = {
 _func_tmp = []
 _func_libary = {}
 _func = False
+_index = False
 
 def check_func():
-    global _func_tmp, _func_libary
+    global _func_tmp, _func_libary, _lines, _func, _index, func_name
     _lin = _lines.split()
     _w = _lines.split()[0]
     if _w != 'end':
         _func_tmp.append(_lin)
+        _index = False
     else:
-        _func_libary[_func_name] = _func_tmp
+        for x in _func_tmp:
+            _func_libary[_func_name] = x
+            print(_func_libary)
         _func_tmp = []
         _func = False
 
 def check_syntax():
-    global _out_output, _out_var, _skip, _func_libary, _func_tmp, _func, _func_name
+    global _out_output, _out_var, _skip, _func_libary, _func_tmp, _func, _func_name, _lines, _index, _func_name
     _out_output = ''
     _word = _lines.split()[0]
+
+    if _word in _func_libary:
+        _index = True
+        _IDX = _func_libary[_word]
+        print(_IDX)
+
     if _word in _syntax:
-        if _word == 'out':
+
+        if _index == False:
             _IDX = _lines.split()
+
+        if _word == 'out':
             _IDX.pop(0)
             for _idx in _IDX:
                 if _idx not in _syn:
@@ -60,7 +73,6 @@ def check_syntax():
                         input('')
 
         if _word == 'var':
-            _IDX = _lines.split()
             _IDX.pop(0)
             _name = _IDX[0]
             _IDX.pop(0)
@@ -69,7 +81,6 @@ def check_syntax():
             #print(_vars)
 
         if _word == 'take':
-            _IDX = _lines.split()
             _IDX.pop(0)
             _to_take_name = _IDX[0]
             _IDX.pop(0)
@@ -78,7 +89,6 @@ def check_syntax():
             _vars[_to_take_name] = _to_take_var
 
         if _word == 'str':
-            _IDX = _lines.split()
             _IDX.pop(0)
             _name = _IDX[0]
             _IDX.pop(0)
@@ -87,7 +97,6 @@ def check_syntax():
             #print(_vars)
         
         if _word == 'rand':
-            _IDX = _lines.split()
             _IDX.pop(0)
             _rand_name = _IDX[0]
             _IDX.pop(0)
@@ -106,7 +115,6 @@ def check_syntax():
                     _vars[_rand_name] = _rand_val
 
         if _word == 'if':
-            _IDX = _lines.split()
             _IDX.pop(0)
             _thing = _IDX[0]
             _IDX.pop(0)
@@ -116,7 +124,6 @@ def check_syntax():
                 _skip = True
         
         if _word == 'ifn':
-            _IDX = _lines.split()
             _IDX.pop(0)
             _thing = _IDX[0]
             _IDX.pop(0)
@@ -126,7 +133,6 @@ def check_syntax():
                 _skip = True
 
         if _word == 'add':
-            _IDX = _lines.split()
             _IDX.pop(0)
             _add_name = _IDX[0]
             _IDX.pop(0)
@@ -140,7 +146,6 @@ def check_syntax():
                 _vars[_add_name] = _vars[_con_1] + _vars[_con_2]
         
         if _word == 'sub':
-            _IDX = _lines.split()
             _IDX.pop(0)
             _add_name = _IDX[0]
             _IDX.pop(0)
@@ -154,7 +159,6 @@ def check_syntax():
                 _vars[_add_name] = int(_vars[_con_1]) - int(_vars[_con_2])
 
         if _word == 'mul':
-            _IDX = _lines.split()
             _IDX.pop(0)
             _add_name = _IDX[0]
             _IDX.pop(0)
@@ -168,7 +172,6 @@ def check_syntax():
                 _vars[_add_name] = int(_vars[_con_1]) * int(_vars[_con_2])
 
         if _word == 'div':
-            _IDX = _lines.split()
             _IDX.pop(0)
             _add_name = _IDX[0]
             _IDX.pop(0)
@@ -182,23 +185,14 @@ def check_syntax():
                 _vars[_add_name] = int(_vars[_con_1]) / int(_vars[_con_2])
 
         if _word == 'func':
-            _IDX = _lines.split()
             _IDX.pop(0)
             _func_name = _IDX[0]
             _IDX.pop(0)
             _func = True
 
-    elif _word in _func_libary:
-        return
-
     else:
         if _word not in _func_libary:
             print(r"Error Exception '{No Accessible Syntax}'; Press any Key to Continue the Programm anyways" + _word + input(''))
-        else:
-            for each in _func_libary[_word]:
-                print('each')
-                _lines = each
-                check_syntax()
 
 
 with open(_to_compile, 'r') as _line:
@@ -234,4 +228,4 @@ with open(_to_compile, 'r') as _line:
 #sub = done
 #mul = done
 #div = done
-#func = W.I.P
+#func = W.I.P 75%
