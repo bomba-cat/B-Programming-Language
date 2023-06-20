@@ -4,6 +4,7 @@ import tkinter as tk
 import keyboard as key
 import random
 import math
+import tkinter as tk
 from tkinter import filedialog as fd
 
 filetype = {
@@ -12,7 +13,7 @@ filetype = {
 
 _to_compile = fd.askopenfilename(filetypes=filetype)
 #_to_compile = fr"C:\Users\bledi\Documents\Python\B+\compiler\file_example.b"
-_syntax = ['out','var','str','func','if','ifn','endif','take','add','sub','mul','div','rand'] #add = addition, sub = subtraction, mul = multiplication, div = division for math
+_syntax = ['out','var','str','func','if','ifn','endif','take','add','sub','mul','div','rand','window','button'] #add = addition, sub = subtraction, mul = multiplication, div = division for math
 _syn = ['<<', '>>']
 _out_output = ''
 _out_var = ''
@@ -21,11 +22,16 @@ _vars = {
     'MATH.PI': math.pi,
     'MATH.random': random.randint(0,255),
     'MATH.dice': random.randint(1,6),
+    'window.h': 800,
+    'window.w': 600,
+    'window.title': 'Standart Window',
 }
 _func_tmp = []
 _func_libary = {}
 _func = False
 _index = False
+_buttons = {}
+_bxytmp = []
 
 def check_func():
     global _func_tmp, _func_libary, _lines, _func, _index, func_name
@@ -42,7 +48,7 @@ def check_func():
         _func = False
 
 def check_syntax():
-    global _out_output, _out_var, _skip, _func_libary, _func_tmp, _func, _func_name, _lines, _index, _func_name
+    global _out_output, _out_var, _skip, _func_libary, _func_tmp, _func, _func_name, _lines, _index, _func_name, app, _buttons, _bxytmp
     _out_output = ''
     _word = _lines.split()[0]
 
@@ -190,6 +196,32 @@ def check_syntax():
             _IDX.pop(0)
             _func = True
 
+        if _word == 'button':
+            _IDX.pop(0)
+            _b_name = _IDX[0]
+            _IDX.pop(0)
+            _b_x = _IDX[0]
+            _bxytmp.append(_b_x)
+            _IDX.pop(0)
+            _bxytmp.append(_b_y)
+            _b_y = _IDX[0]
+            _IDX.pop(0)
+            _b_text = _IDX[0]
+            _bxytmp.append(_b_text)
+            _buttons[_b_name] = _bxytmp
+            _bxytmp = []
+            #W.I.P
+
+        if _word == 'window':
+            _IDX.pop(0)
+            app = tk.Tk()
+            app.title(str(_vars['window.title']))
+            winh = str(_vars['window.h'])
+            winw = str(_vars['window.w'])
+            app.geometry(f"{winh}x{winw}")
+            app.mainloop()
+            
+
     else:
         if _word not in _func_libary:
             print(r"Error Exception '{No Accessible Syntax}'; Press any Key to Continue the Programm anyways" + _word + input(''))
@@ -228,4 +260,7 @@ with open(_to_compile, 'r') as _line:
 #sub = done
 #mul = done
 #div = done
-#func = W.I.P 75%
+#func = 75%
+#create windows = done
+#buttons = 0%
+#labels = 0%
