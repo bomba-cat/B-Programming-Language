@@ -13,7 +13,7 @@ filetype = {
 
 _to_compile = fd.askopenfilename(filetypes=filetype)
 #_to_compile = fr"C:\Users\bledi\Documents\Python\B+\compiler\file_example.b"
-_syntax = ['out','var','str','func','if','ifn','endif','take','add','sub','mul','div','rand','window','button'] #add = addition, sub = subtraction, mul = multiplication, div = division for math
+_syntax = ['out','var','str','func','if','ifn','endif','take','add','sub','mul','div','rand','window','button',r'//'] #add = addition, sub = subtraction, mul = multiplication, div = division for math
 _syn = ['<<', '>>']
 _out_output = ''
 _out_var = ''
@@ -22,28 +22,31 @@ _vars = {
     'MATH.PI': math.pi,
     'MATH.random': random.randint(0,255),
     'MATH.dice': random.randint(1,6),
-    'window.h': 800,
+    'window.h': 500,
     'window.w': 600,
-    'window.title': 'Standart Window',
+    'window.title': 'Please define a Window title!',
 }
 _func_tmp = []
-_func_libary = {}
+_func_libary = {
+    '_func_test': [['out','working','<<'],['out','lines','working','<<']]
+}
 _func = False
 _index = False
 _buttons = {}
 _bxytmp = []
 
 def check_func():
-    global _func_tmp, _func_libary, _lines, _func, _index, func_name
+    global _func_tmp, _func_libary, _lines, _func, _index, _func_name
     _lin = _lines.split()
     _w = _lines.split()[0]
+    _func_libary[_func_name] = []
     if _w != 'end':
         _func_tmp.append(_lin)
         _index = False
     else:
         for x in _func_tmp:
-            _func_libary[_func_name] = x
-            print(_func_libary)
+            _func_libary[_func_name].append(x)
+        #print(_func_libary)
         _func_tmp = []
         _func = False
 
@@ -51,13 +54,17 @@ def check_syntax():
     global _out_output, _out_var, _skip, _func_libary, _func_tmp, _func, _func_name, _lines, _index, _func_name, app, _buttons, _bxytmp
     _out_output = ''
     _word = _lines.split()[0]
+    _IDX = []
+    _tmpIDX = []
 
     if _word in _func_libary:
         _index = True
-        _IDX = _func_libary[_word]
+        _tmpIDX = _func_libary[_word]
+        for idx in _tmpIDX:
+            _IDX.append(idx)
         print(_IDX)
 
-    if _word in _syntax:
+    elif _word in _syntax:
 
         if _index == False:
             _IDX = _lines.split()
@@ -75,7 +82,7 @@ def check_syntax():
                     elif _idx == '>>':
                         print(_out_var)
                     else:
-                        print(r'Unexpected out Error; Press any Key to Continue the Programm anyways')
+                        print(r'Unexpected output Error; Press any Key to Continue the Programm anyways')
                         input('')
 
         if _word == 'var':
@@ -218,13 +225,19 @@ def check_syntax():
             app.title(str(_vars['window.title']))
             winh = str(_vars['window.h'])
             winw = str(_vars['window.w'])
-            app.geometry(f"{winh}x{winw}")
+            app.geometry(f"{winw}x{winh}")
             app.mainloop()
+        
+        if _word == '//':
+            #print(fr'skipping :/ {_IDX}')
+            _IDX = []
             
 
     else:
         if _word not in _func_libary:
-            print(r"Error Exception '{No Accessible Syntax}'; Press any Key to Continue the Programm anyways" + _word + input(''))
+            print(r'Keyword error { ' + _word + r' }')
+            print(r"Syntax error '{No Accessible Syntax}'; Press any Key to Continue the Programm anyways")
+            input('')
 
 
 with open(_to_compile, 'r') as _line:
@@ -260,7 +273,10 @@ with open(_to_compile, 'r') as _line:
 #sub = done
 #mul = done
 #div = done
-#func = 75%
+
+#func = 75% //changed behaviour
+
 #create windows = done
+#comments = done
 #buttons = 0%
 #labels = 0%

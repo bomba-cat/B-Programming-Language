@@ -1,34 +1,34 @@
 str mood Good!
 out How is this Program today? Also shows variables with str <<
 out mood >>
-out  <<
+out <<
 
 var a 1
 out this is a variable with var <<
 out a >>
-out  <<
+out <<
 
 take your_mood How are you today?
 out your_mood >>
-out  <<
+out <<
 
 out here are some standart variables given by the compiler: <<
 out MATH.PI >>
 out Gives you PI <<
-out  <<
+out <<
 
 out MATH.random >>
 out Gives you a random number from 0 - 255; Rerun program to try again ;) <<
-out  <<
+out <<
 
 out PRO TIP: <<
 out there is a difference between var and str ;) <<
-out  <<
+out <<
 
 rand b 0 10 <<
 out random number from 0 - 10: <<
 out b >>
-out  <<
+out <<
 
 var a 1
 var b 2
@@ -44,10 +44,11 @@ out ab+ >>
 out ba- >>
 out ab* >>
 out db/ >>
-out  <<
+out <<
 
 if a b >>
 out not working <<
+out <<
 endif
 
 var b 1
@@ -55,8 +56,14 @@ var a 1
 
 if a b >>
 out working <<
+out <<
 endif
 
 ifn c d >>
 out working <<
+out <<
 endif
+
+// This is a comment and YES! the space needs to be present between the // and the first word.
+out Above me is a comment! Check the code! <<
+out <<
