@@ -11,7 +11,15 @@ filetype = {
     ('B+ files', '*.b')
 }
 
-_to_compile = fd.askopenfilename(filetypes=filetype)
+try:
+    if os.environ['$DISPLAY']:
+        _to_compile = fd.askopenfilename(filetypes=filetype)
+except:
+    try:
+        if os.environ['OS'] == 'Windows_NT':
+            _to_compile = fd.askopenfilename(filetypes=filetype)
+    except:
+        _to_compile = input('Please enter the Directory of your Program :_ ')
 #_to_compile = fr"C:\Users\bledi\Documents\Python\B+\compiler\file_example.b"
 _syntax = ['out','var','str','func','if','ifn','endif','take','add','sub','mul','div','rand','window','button',r'//'] #add = addition, sub = subtraction, mul = multiplication, div = division for math
 _syn = ['<<', '>>']
