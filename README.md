@@ -1,12 +1,16 @@
 # B+-Programming-Language
 
-B+ is a Programming language made for starters to get into programming very easily by terminating different prefixes etc. No need to put = or +, -, *, /. The Transpiler will
-translate it automatically.
+B+ Programming language is a beginner friendly programming language which aims to teach new programmer the logic of programming without concerning much about the syntax etc. It aims to take away things which could confuse new programmers and for them to start understanding the logic of the whole thing. Its recommended for them to learn B+ and a language such as lua or python at the same time as B+ will help with understanding basic logic of programming and other languages help them to understand the basics syntax of most languages. Combining both will result in a beginner friendly and easy programming experience. B+ isnt made for bigger projects as it aims to help beginners make simple programs such as a calculator or something like that.
+
+B+ is a Programming language made for starters to get into programming very easily by terminating different prefixes etc. No need to put = or +, -, *, /.
 
 Given variables:
 	MATH.PI = Pi
 	MATH.random = a random number from 0 to 255 which generates each time the programm starts and cant be changed while program is running.
 	MATH.dice = a random number from 1 to 6
+	window.h = default is 500, sets the window height
+	window.w = default is 600, sets the window width
+	window.title = default is 'My Application!', sets the window Title
 
 out:
 	The out command replaces the print command as its mostly known of. It outputs text to the Terminal. An example command would be: out Hello World! <<.

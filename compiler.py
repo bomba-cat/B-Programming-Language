@@ -24,7 +24,7 @@ _vars = {
     'MATH.dice': random.randint(1,6),
     'window.h': 500,
     'window.w': 600,
-    'window.title': 'Please define a Window title!',
+    'window.title': 'My Application!',
 }
 _func_tmp = []
 _func_libary = {
