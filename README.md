@@ -21,3 +21,12 @@ take:
 
 rand:
 	Use: rand generated_number 0 255, generates a number between 0 and 255 with the given variable of generated_number.
+
+if and ifn:
+	The if statement is a common statement amognst all programming languages and is one of the most important one. With it you can make multiple possibilities how a programm would work for example if a is 1 then... The ifn statement is the negative of the if statement and checks if the statement is NOT true. with this you can make multiple possible ways a program will work.
+
+add, sub, mul, div:
+	add = addition, sub = subtraction, mul = multiplication, div = division, with these basic statements you can make simple mathematical calculations of numbers and variables.
+
+func:
+	With "func" you can create functions which are lines of codes which can be recalled at any time.
