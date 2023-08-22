@@ -42,6 +42,7 @@ _func = False
 _index = False
 _buttons = {}
 _bxytmp = []
+_button_names = []
 
 def check_func():
     global _func_tmp, _func_libary, _lines, _func, _index, _func_name
@@ -224,6 +225,8 @@ def check_syntax():
             _b_text = _IDX[0]
             _bxytmp.append(_b_text)
             _buttons[_b_name] = _bxytmp
+            print(_buttons)
+            print(_bxytmp)
             _bxytmp = []
             #W.I.P
 
@@ -234,6 +237,8 @@ def check_syntax():
             winh = str(_vars['window.h'])
             winw = str(_vars['window.w'])
             app.geometry(f"{winw}x{winh}")
+            #for btn in _buttons.iterkeys():
+            #    btn = tk.Button(text=_bxytmp.keys()[2])
             app.mainloop()
         
         if _word == '//':
