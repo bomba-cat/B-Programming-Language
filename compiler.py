@@ -237,9 +237,9 @@ def check_syntax():
             winw = str(_vars['window.w'])
             app.geometry(f"{winw}x{winh}")
             for btn in _buttons:
-                btn = list(_buttons.values())
-                button = tk.Button(text=btn[0][2])
-                button.place(x=btn[0][0],y=btn[0][1])
+                btn = list(_buttons.values())[0]
+                button = tk.Button(text=btn[2])
+                button.place(x=btn[0],y=btn[1])
             app.mainloop()
         
         if _word == '//':
