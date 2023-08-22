@@ -219,8 +219,8 @@ def check_syntax():
             _b_x = _IDX[0]
             _bxytmp.append(_b_x)
             _IDX.pop(0)
-            _bxytmp.append(_b_y)
             _b_y = _IDX[0]
+            _bxytmp.append(_b_y)
             _IDX.pop(0)
             _b_text = _IDX[0]
             _bxytmp.append(_b_text)
@@ -228,7 +228,6 @@ def check_syntax():
             print(_buttons)
             print(_bxytmp)
             _bxytmp = []
-            #W.I.P
 
         if _word == 'window':
             _IDX.pop(0)
@@ -237,8 +236,10 @@ def check_syntax():
             winh = str(_vars['window.h'])
             winw = str(_vars['window.w'])
             app.geometry(f"{winw}x{winh}")
-            #for btn in _buttons.iterkeys():
-            #    btn = tk.Button(text=_bxytmp.keys()[2])
+            for btn in _buttons:
+                btn = list(_buttons.values())
+                button = tk.Button(text=btn[0][2])
+                button.place(x=btn[0][0],y=btn[0][1])
             app.mainloop()
         
         if _word == '//':
@@ -286,10 +287,10 @@ with open(_to_compile, 'r') as _line:
 #sub = done
 #mul = done
 #div = done
-
-#func = 75% //changed behaviour
-
 #create windows = done
 #comments = done
-#buttons = 0%
-#labels = 0%
+
+#buttons = 80% //need to add possibility for multiple buttons as for now it only accounts for the first button
+#func = 60% //changed behaviour
+
+#labels = 0% //next
