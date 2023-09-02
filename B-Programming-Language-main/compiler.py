@@ -285,10 +285,10 @@ with open(_to_compile, 'r') as _line:
 #sub = done
 #mul = done
 #div = done
+#create windows = done
+#comments = done
 
 #func = 75% //changed behaviour
 
-#create windows = done
-#comments = done
 #buttons = 0%
 #labels = 0%
