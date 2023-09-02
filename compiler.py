@@ -11,7 +11,15 @@ filetype = {
     ('B+ files', '*.b')
 }
 
-_to_compile = fd.askopenfilename(filetypes=filetype)
+try:
+    if os.environ['$DISPLAY']:
+        _to_compile = fd.askopenfilename(filetypes=filetype)
+except:
+    try:
+        if os.environ['OS'] == 'Windows_NT':
+            _to_compile = fd.askopenfilename(filetypes=filetype)
+    except:
+        _to_compile = input('Please enter the Directory of your Program :_ ')
 #_to_compile = fr"C:\Users\bledi\Documents\Python\B+\compiler\file_example.b"
 _syntax = ['out','var','str','func','if','ifn','endif','take','add','sub','mul','div','rand','window','button',r'//'] #add = addition, sub = subtraction, mul = multiplication, div = division for math
 _syn = ['<<', '>>']
@@ -24,7 +32,7 @@ _vars = {
     'MATH.dice': random.randint(1,6),
     'window.h': 500,
     'window.w': 600,
-    'window.title': 'Please define a Window title!',
+    'window.title': 'My Application!',
 }
 _func_tmp = []
 _func_libary = {
@@ -34,6 +42,7 @@ _func = False
 _index = False
 _buttons = {}
 _bxytmp = []
+_button_names = []
 
 def check_func():
     global _func_tmp, _func_libary, _lines, _func, _index, _func_name
@@ -210,14 +219,15 @@ def check_syntax():
             _b_x = _IDX[0]
             _bxytmp.append(_b_x)
             _IDX.pop(0)
-            _bxytmp.append(_b_y)
             _b_y = _IDX[0]
+            _bxytmp.append(_b_y)
             _IDX.pop(0)
             _b_text = _IDX[0]
             _bxytmp.append(_b_text)
             _buttons[_b_name] = _bxytmp
+            print(_buttons)
+            print(_bxytmp)
             _bxytmp = []
-            #W.I.P
 
         if _word == 'window':
             _IDX.pop(0)
@@ -226,6 +236,10 @@ def check_syntax():
             winh = str(_vars['window.h'])
             winw = str(_vars['window.w'])
             app.geometry(f"{winw}x{winh}")
+            for btn in _buttons:
+                btn = list(_buttons.values())[0]
+                button = tk.Button(text=btn[2])
+                button.place(x=btn[0],y=btn[1])
             app.mainloop()
         
         if _word == '//':
@@ -273,10 +287,10 @@ with open(_to_compile, 'r') as _line:
 #sub = done
 #mul = done
 #div = done
-
-#func = 75% //changed behaviour
-
 #create windows = done
 #comments = done
-#buttons = 0%
-#labels = 0%
+
+#buttons = 80% //need to add possibility for multiple buttons as for now it only accounts for the first button
+#func = 60% //changed behaviour
+
+#labels = 0% //next

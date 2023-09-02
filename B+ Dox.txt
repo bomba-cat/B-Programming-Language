@@ -1,4 +1,7 @@
-Documentation about B+, a programming language made by XK_Dev
+Documentation about B+, a programming language made by xk_rl
+
+### WARNING!
+#Outdated documentation check readme.md for a up to date one
 
 
 B+ is a Programming language made for starters to get into programming very easily by terminating different prefixes etc. No need to put = or +, -, *, /. The Transpiler will
