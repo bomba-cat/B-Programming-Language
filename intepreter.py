@@ -1,3 +1,10 @@
+#Dear developer reviewing this code, incase your not
+#able to understand this code, me neither. At this point
+#only god knows what i wrote here, back then when i made it
+#i made it as a joke between my friends and made it in under 2 hours
+#so please dont come and ask me what i wrote, i really dont know myself
+#regards, xk-rl
+
 import sys
 import os
 import tkinter as tk
