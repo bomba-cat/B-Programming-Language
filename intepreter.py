@@ -1,4 +1,4 @@
-#Dear developer reviewing this code, incase your not
+#Dear developer reviewing this code, in case your not
 #able to understand this code, me neither. At this point
 #only god knows what i wrote here, back then when i made it
 #i made it as a joke between my friends and made it in under 2 hours
